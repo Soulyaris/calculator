@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+
+div, input[type = button] {
+  font-family: 'VT323', monospace;
+  font-size: 32px;
+}
+
+#calculatorBody {
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 25px;
+  width: 310px;
+  height: 400px;
+  display: grid;
+  grid-template-areas: 
+      "disp"
+      "pad";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  transform: translateY(50%);
+  padding: 5px;
+  background-color: #2a2a2a;
+}
+
+#b0, #b1, #b2, #b3, 
+#b4, #b5, #b6, #b7, 
+#b8, #b9, #badd, #bsub, 
+#bmul, #bdiv, #bclr, #bdel, 
+#bdot, #bres {
+  display: block;
+  margin: 2px 4px;
+  text-align: center;
+  border: 0px;
+  border-radius: 10px;
+}
+
+#buttonPad, #displayBody {
+  display: grid;
+  width: 300px;
+  padding: 5px; 
+}
+
+#buttonPad {
+  grid-area: pad;
+  margin: 5px 0px;
+  grid-template-areas: 
+      "bclr bclr bdel bdel"
+      "b7 b8 b9 bmul"
+      "b4 b5 b6 bdiv"
+      "b1 b2 b3 badd"
+      "b0 bdot bres bsub";
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(5,1fr);
+}
+
+#b0 {grid-area: b0;}
+#b1 {grid-area: b1;}
+#b2 {grid-area: b2;}
+#b3 {grid-area: b3;}
+#b4 {grid-area: b4;}
+#b5 {grid-area: b5;}
+#b6 {grid-area: b6;}
+#b7 {grid-area: b7;}
+#b8 {grid-area: b8;}
+#b9 {grid-area: b9;}
+#badd {grid-area: badd;}
+#bsub {grid-area: bsub;}
+#bclr {grid-area: bclr; background-color: red; color: white;}
+#bdel {grid-area: bdel; color: red;}
+#bdot {grid-area: bdot;}
+#bmul {grid-area: bmul;}
+#bdiv {grid-area: bdiv;}
+#bres {grid-area: bres; background-color: orange; color: white;}
+
+input[type = button] {
+  cursor: pointer;
+}
+
+input[type = button]:hover {
+  background-color: red;
+  color: white;
+}
+
+#bclr:hover {
+  background-color: white;
+  color: red;
+}
+
+#bdel:hover {
+  background-color: red;
+  color: white;
+}
+
+#bres:hover {
+  background-color: black;
+  color: orange;
+}
+
+#numericInput, #operator, #result {
+  display: block;
+  margin: 3px;
+  text-align: right;
+}
+
+#displayBody {
+  grid-area: disp;
+  margin: 5px 0px;
+  border-bottom: 2px solid black;
+  border-radius: 15px;
+  padding-bottom: 10px;
+  grid-template-areas: 
+      "operator input"
+      "operator result";
+  grid-template-rows: repeat(2,1fr);
+  grid-template-columns: 1fr 9fr;
+  background-color: orange;
+  height: 80px;
+}
+
+#numericInput {grid-area: input;}
+#result {grid-area: result;}
+
+#operator {
+  grid-area: operator;
+  width: 20px;
+  margin: auto;
+}
