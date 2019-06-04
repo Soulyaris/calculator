@@ -72,6 +72,10 @@ div, input[type = button] {
 #bdiv {grid-area: bdiv;}
 #bres {grid-area: bres; background-color: orange; color: white;}
 
+#badd:hover, #bsub:hover, #bdel:hover, #bmul:hover  {
+  background-color: orange;
+}
+
 input[type = button] {
   cursor: pointer;
 }
