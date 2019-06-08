@@ -9,6 +9,7 @@ const bkspc = document.querySelector('#bdel');
 const dot = document.querySelector('#bdot');
 const body = document.body;
 let operand = 1;
+let calculated = false;
 
 firstOperand.innerText = 0;
 
@@ -28,12 +29,12 @@ operators.forEach((oper) => {
 })
 
 let evaluate = (operandum, val) => 
-  (operandum.innerText == "0" || operandum.innerText == "ERROR") ? val : (operandum.innerText.length < 20) ? operandum.innerText + val : operandum.innerText;
+  (operandum.innerText == "0" || operandum.innerText == "ERROR" || calculated === true) ? val : (operandum.innerText.length < 20) ? operandum.innerText + val : operandum.innerText;
 
 numeric.forEach((num) => {
   num.addEventListener('click', (e) => {
-    (operand === 1) ? firstOperand.innerText = evaluate(firstOperand, e.srcElement.value) :
-      secOperand.innerText = evaluate(secOperand, e.srcElement.value);
+    if (operand === 1) {firstOperand.innerText = evaluate(firstOperand, e.srcElement.value); calculated = false;}
+    else secOperand.innerText = evaluate(secOperand, e.srcElement.value);
   })
 })
 
@@ -59,6 +60,7 @@ dot.addEventListener('click', (e) => {
 
 result.addEventListener('click', (e) => {
   if (operatorView.innerText === "") return;
+  calculated = true;
   if (operatorView.innerText === "/" && secOperand.innerText === "0") {secOperand.innerText = "ERROR"; return};
   let statement = firstOperand.innerText + operatorView.innerText + secOperand.innerText;
   firstOperand.innerText = eval(statement);
