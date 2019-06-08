@@ -28,13 +28,14 @@ operators.forEach((oper) => {
   })
 })
 
-let evaluate = (operandum, val) => 
-  (operandum.innerText == "0" || operandum.innerText == "ERROR" || calculated === true) ? val : (operandum.innerText.length < 20) ? operandum.innerText + val : operandum.innerText;
+let evaluate = (operandum, val) => {
+  if (operandum.innerText == "0" || operandum.innerText == "ERROR" || calculated === true) {calculated = false; return val;} 
+  else if (operandum.innerText.length < 20) return operandum.innerText + val; else return operandum.innerText;
+}
 
 numeric.forEach((num) => {
   num.addEventListener('click', (e) => {
-    if (operand === 1) {firstOperand.innerText = evaluate(firstOperand, e.srcElement.value); calculated = false;}
-    else secOperand.innerText = evaluate(secOperand, e.srcElement.value);
+    (operand === 1) ? firstOperand.innerText = evaluate(firstOperand, e.srcElement.value) : secOperand.innerText = evaluate(secOperand, e.srcElement.value);
   })
 })
 
